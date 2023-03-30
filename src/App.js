@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+   
+    return (
+      <div className="background-body">
+        <div className = "filter-layer">
+          <div className='gradient'>
+            <div className='structure'>
+              <div className="menu">
+                <div className="n-l">
+                  <div className="logo"></div>
+                  <div className="name-title"><h1>Tripadvisor</h1></div>
+                </div>
+                <div className='home'>Home</div>
+                <div className='about'>About Us</div>
+                <div className='contact'>Contact Us</div>
+              </div>
+              <Link to="/signup"><div className="loginsignupcard">
+                <div className="profilelogo"><CgProfile/></div>
+                <div className="loginsignup-text">Log In or Sign up</div>
+              </div></Link>
+            </div>
+            <div className="content-main">
+              <div className="white-line"></div>
+              <div className="content-main-text">
+                <p>PLAN YOUR <br/> PERFECT TRIP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
+   
 export default App;
