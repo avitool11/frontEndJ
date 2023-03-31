@@ -62,6 +62,11 @@ h1{
   color: white;
   padding: 10px;
 }
+.structure1{
+  height: 100%;
+  width:100%;
+  background-color: rgba(0, 207, 200, 0.3);
+}
 .structure {
   display: flex;
   flex-direction: row;
