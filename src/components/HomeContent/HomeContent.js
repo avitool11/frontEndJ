@@ -12,13 +12,13 @@ class HomeContent extends Component {
                     <div className="content-main-text">
                         <p>PLAN YOUR <br/> PERFECT TRIP</p>
                     </div>
-                    <Link to="/final" style={{ textDecoration: 'none' }}> 
-                    <div className='bengaluru-cover'>
+                     
+                    <div className='bengaluru-cover' style={{cursor: 'pointer'}} onClick={this.props.onClick}>
                         <div className='bengaluru-image'></div>
                         <div className='bengaluru-name'>
                             BENGALURU
                         </div>
-                    </div></Link>
+                    </div>
                 </div>
             </div>
         );

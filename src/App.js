@@ -5,6 +5,21 @@ import ProfileCard from "./components/Profile/ProfileCard";
 import HomeContent from "./components/HomeContent/HomeContent";
 import ClassesPage from "./components/ClassesPage/ClassesPage"
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showClasses: false
+    }
+    this.swapContent = this.swapContent.bind(this);
+  }
+
+  swapContent(event) {
+    if (this.state.showClasses == false)
+      this.setState({showClasses: true});
+    else
+      this.setState({showClasses: false})
+  }
+
   render() {
    
     return (
@@ -27,8 +42,7 @@ class App extends Component {
                   <ProfileCard/>
               </div></Link>
             </div>
-              {/* <HomeContent/> */}
-              <ClassesPage/>
+              {!this.state.showClasses ? <HomeContent onClick={this.swapContent} /> : <ClassesPage onClick = {this.swapContent}/>}
             </div>
           </div>
         </div>

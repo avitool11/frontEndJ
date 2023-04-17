@@ -16,25 +16,29 @@
     height: auto; 
     overflow: hidden; 
   }
-  @font-face {
-    font-family: Montserrat;
-    font-style: oblique;
-    src: url("https://www.1001fonts.com/download/font/montserrat.regular.ttf");
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../../fonts/Montserrat-Thin.eot'); /* IE9 Compat Modes */
+  src: 
+      url('../../../fonts/Montserrat-Thin.woff2') format('woff2'), /* Super Modern Browsers */
+      url('../../../fonts/Montserrat-Thin.woff') format('woff'), /* Pretty Modern Browsers */
+      url('../../../fonts/Montserrat-Thin.ttf')  format('truetype'), /* Safari, Android, iOS */
+      url('../../../fonts/Montserrat-Thin.svg#svgFontName') format('svg'); /* Legacy iOS */
 
-  }
-  .image {
-    width: 100%; 
-    height: auto; 
-    object-fit: cover; 
-    border-radius: 8px ;
-  }
-  .title {
-    font-family: Montserrat;
-    font-weight: bolder;
-    font-size: 22px;
+}
+.image {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 8px ;
+}
+.title {
+  font-family: 'Montserrat';
+  font-weight: bolder;
+  font-size: 22px;
 
-  }
-  .description {
-    font-family: Montserrat;
+}
+.description {
+  font-family: 'Montserrat';
 
-  }
+}
