@@ -69,3 +69,6 @@ button:hover {
   .LoginButton:hover {
     cursor: pointer;
   }
+  .invalid-attempt{
+    color: rgb(187, 1, 1);
+  }

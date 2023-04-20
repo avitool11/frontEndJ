@@ -4,7 +4,6 @@ import './Card.css';
 
 class Card extends Component {
     render() {
-        const { imageUrl1 } = this.props;
         return (
             <div className='main-card'>
                 <div className='image-frame'  >

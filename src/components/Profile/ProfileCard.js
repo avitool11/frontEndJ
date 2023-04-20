@@ -9,7 +9,7 @@ class ProfileCard extends Component {
         <div className='card-profile'>
                 
             <div className="profilelogo"><CgProfile/></div>
-            <div className="loginsignup-text">Log In or Sign up</div>
+            <div className="loginsignup-text">{this.props.message}</div>
         </div>
         )
     }

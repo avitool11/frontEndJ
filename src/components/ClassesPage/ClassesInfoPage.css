@@ -30,17 +30,9 @@
   flex-direction: column;
   gap: 10px;
 }
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-Thin.eot'); /* IE9 Compat Modes */
-  src: 
-      url('../../fonts/Montserrat-Thin.woff2') format('woff2'), /* Super Modern Browsers */
-      url('../../fonts/Montserrat-Thin.woff') format('woff'), /* Pretty Modern Browsers */
-      url('../../fonts/Montserrat-Thin.ttf')  format('truetype'), /* Safari, Android, iOS */
-      url('../../fonts/Montserrat-Thin.svg#svgFontName') format('svg'); /* Legacy iOS */
 
-}
 .back{
   font-family: Montserrat;
   font-size:medium;
+  font-weight: bold;
 }

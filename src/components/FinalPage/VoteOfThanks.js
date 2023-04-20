@@ -8,7 +8,7 @@ class VoteOfThanks extends Component {
         return (
             <div className='welcome'>
                 <h1 className='heading'> WELCOME TO TRIP ADVISOR </h1>
-                <p className='paragraph'>Enter your Reveiw:</p>
+                <p className='paragraph'>Enter your Review:</p>
             </div>
         )
     }

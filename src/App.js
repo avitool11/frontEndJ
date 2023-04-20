@@ -3,7 +3,10 @@ import './App.css';
 import { Link } from "react-router-dom";
 import ProfileCard from "./components/Profile/ProfileCard";
 import HomeContent from "./components/HomeContent/HomeContent";
-import ClassesPage from "./components/ClassesPage/ClassesPage"
+import ClassesInfoPage from './components/ClassesPage/ClassesInfoPage';
+import { connect } from 'react-redux';
+
+
 class App extends Component {
   constructor() {
     super();
@@ -14,14 +17,14 @@ class App extends Component {
   }
 
   swapContent(event) {
-    if (this.state.showClasses == false)
+    if (this.state.showClasses === false)
       this.setState({showClasses: true});
     else
-      this.setState({showClasses: false})
+      this.setState({showClasses: false});
   }
 
   render() {
-   
+    const { first_name,last_name,user_id, isLoggedIn } = this.props;
     return (
       
       <div className="background-body">
@@ -39,10 +42,10 @@ class App extends Component {
                 <div className='contact'>CONTACT US</div>
               </div>
               <Link to="/signup" style={{ textDecoration: 'none' }}><div className="loginsignupcard">
-                  <ProfileCard/>
+                  {(!isLoggedIn) ? <ProfileCard message = "Login or Sign Up"/> : <ProfileCard message = {"Welcome " + first_name + " " + last_name}/>}
               </div></Link>
             </div>
-              {!this.state.showClasses ? <HomeContent onClick={this.swapContent} /> : <ClassesPage onClick = {this.swapContent}/>}
+              {!this.state.showClasses ? <HomeContent onClick={this.swapContent} /> : <ClassesInfoPage onClickMainCard = {this.swapContent}/>}
             </div>
           </div>
         </div>
@@ -50,5 +53,12 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  isLoggedIn : state.isLoggedIn,
+  first_name : state.first_name,
+  last_name : state.last_name,
+  user_id : state.user_id
+  
+});
    
-export default App;
+export default connect(mapStateToProps)(App);

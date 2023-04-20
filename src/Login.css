@@ -3,6 +3,7 @@
     font-style: normal;
     src: url("https://www.1001fonts.com/download/font/montserrat.regular.ttf");
   }
+
 .container{
     position:relative;
     margin-left: 28vw;
@@ -10,7 +11,7 @@
     display: inline-flex;
     flex-direction: column;
     font-family:Montserrat,'Times New Roman', Times, serif ;
-    color: white;
+
     border: 3px solid #fff;
     border-radius: 7px;
     padding: 10px;
@@ -37,6 +38,7 @@
     height: 100%;
     
 }
+
 button:hover {
     background-color: rgba(122, 252, 230, 0.6);
     color: #310000;
@@ -53,6 +55,7 @@ button:hover {
   .password {
     width: 100%;
   }
+  
   input[type="text"] {
     width: 100%;
   }
