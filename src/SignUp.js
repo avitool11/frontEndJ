@@ -33,7 +33,7 @@ class SignUp extends Component {
             age: this.state.age
         })
         console.log(bodyData);
-        fetch('http://127.0.0.1:5000/signup', {
+        fetch('https://test1-4dk76hxqra-el.a.run.app/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

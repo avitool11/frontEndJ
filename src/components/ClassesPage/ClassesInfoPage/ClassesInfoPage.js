@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import "./ClassesInfoPage.css";
-import Card from "./Card/Card";
-import image1 from './images/sightSeeing.jpg';
-import image2 from './images/adventure.jpg';
-import image3 from './images/funActivities.jpg';
-import image4 from './images/dineout.jpg';
-import { Navigate } from "react-router-dom";
+import Card from "../Card/Card";
+import image1 from '.././images/sightSeeing.jpg';
+import image2 from '.././images/adventure.jpg';
+import image3 from '.././images/funActivities.jpg';
+import image4 from '.././images/dineout.jpg'
 
 class ClassesInfoPage extends Component {
     
-    constructor() {
-        super();
-        this.state = {
-            category: null,
-            changeCategory: false
-        }
+    constructor(props) {
+        super(props);
+        
         this.handleCardClick = this.handleCardClick.bind(this);
         this.constants = {
             cards: [
@@ -42,16 +38,15 @@ class ClassesInfoPage extends Component {
         };
     }
     handleCardClick(category){
-        this.setState({
-            category: category,
-            changeCategory: true
-        })
+
+            this.props.transitionCardClick(category);
+            
+            this.props.transitionFunction();
     }
 
     render() {
         return (
             <div className='class-home'>
-                {this.changeCategory && (<Navigate to={'/description'} />)}
                     <div className="content-main">
                     <div className="white-line"></div>
                     <div className="content-main-text">
@@ -66,7 +61,7 @@ class ClassesInfoPage extends Component {
                             <Card title = "ADVENTURE" image = {image2} description="Visit to Check the Best of the Adventure places in Bengaluru. From Paragliding to Motor Riding in this city of Adventure and Thrill. "/>
                             <Card title = "FUN ACTIVITIES" image = {image3} description="Visit to Check the Best of the Fun Activity places in Bengaluru. From Exploring the Fun point like TORQ to the Swings of Wonderla"/>
                             <Card title = "DINE-OUT" image = {image4} description="Visit to Check the Best of the DINE-OUT places in Bengaluru. Explore the Exquisite Restaurants with the most cheerful Pubs in the silicon city of India."/> */}
-                            {this.constants.cards.map(card => <Card  title = {card.title} image = {card.image} description={card.description}/>)}
+                            {this.constants.cards.map((card, index) => <Card key={index+1} onClick={event => this.handleCardClick(card.title)} title = {card.title} image = {card.image} description={card.description}  />)}
                         </div>
                     </div>
                 </div>

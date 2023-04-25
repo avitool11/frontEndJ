@@ -5,7 +5,7 @@ import './Card.css';
 class Card extends Component {
     render() {
         return (
-            <div className='main-card'>
+            <div className='main-card' onClick={this.props.onClick} style={{cursor: 'pointer'}}>
                 <div className='image-frame'  >
                     <img src={this.props.image} className="image" />
                 </div>

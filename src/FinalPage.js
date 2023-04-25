@@ -4,6 +4,7 @@ import VoteOfThanks from './components/FinalPage/VoteOfThanks';
 import RatingPredicitonButton from './components/FinalPage/RatingPredictionButton';
 import './FinalPage.css';
 
+
 class FinalPage extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +17,7 @@ class FinalPage extends Component {
       handleDataChange(newData) {
         this.setState({ data: newData });
       }
+    
     render () {
         return (
             <div className="background-body">
@@ -38,4 +40,5 @@ class FinalPage extends Component {
     }
 }
 
-export default FinalPage;
+
+export default (FinalPage);

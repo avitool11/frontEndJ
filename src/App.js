@@ -3,9 +3,8 @@ import './App.css';
 import { Link } from "react-router-dom";
 import ProfileCard from "./components/Profile/ProfileCard";
 import HomeContent from "./components/HomeContent/HomeContent";
-import ClassesInfoPage from './components/ClassesPage/ClassesInfoPage';
 import { connect } from 'react-redux';
-
+import ClassesPage from './components/ClassesPage/ClassesPage';
 
 class App extends Component {
   constructor() {
@@ -45,7 +44,7 @@ class App extends Component {
                   {(!isLoggedIn) ? <ProfileCard message = "Login or Sign Up"/> : <ProfileCard message = {"Welcome " + first_name + " " + last_name}/>}
               </div></Link>
             </div>
-              {!this.state.showClasses ? <HomeContent onClick={this.swapContent} /> : <ClassesInfoPage onClickMainCard = {this.swapContent}/>}
+              {!this.state.showClasses ? <HomeContent onClick={this.swapContent} /> : <ClassesPage onClickMainCard = {this.swapContent}/>}
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 class Login extends Component {
   
     handleLogin = (data) => {
-      this.props.dispatch({ type: 'LOGIN', first_name: data.first_name, last_name: data.last_name, user_id: data.user_id});
+      this.props.dispatch({ type: 'LOGIN', first_name: data.first_name, last_name: data.last_name, user_id: data.id});
     }
 
     handleLogout = () => {
@@ -38,7 +38,7 @@ class Login extends Component {
             password: this.state.password,
         })
         console.log(bodyData);
-        fetch('http://127.0.0.1:5000/login', {
+        fetch('https://test1-4dk76hxqra-el.a.run.app/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

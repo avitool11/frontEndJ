@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './RatingPredictionButton.css';
 import LoadingSpinner from './LoadingSpinner';
 import SubmitButton from './SubmitButton';
+import { connect } from 'react-redux';
+import { useLocation } from 'react-router';
 
 
 class RatingPredictionButton extends Component {
@@ -19,6 +21,8 @@ class RatingPredictionButton extends Component {
           showAdditionalElements: false,
           selectedOptionR: ''
         };
+        this.handleClickWithEdit = this.handleClickWithEdit.bind(this);
+        this.handleClickWithoutEdit = this.handleClickWithoutEdit.bind(this);
       }
       handleOptionChangeR = (event) => {
         this.setState({ selectedOptionR: event.target.value });
@@ -33,23 +37,60 @@ class RatingPredictionButton extends Component {
     
       handleClick = () => {
         this.setState({ isLoading: true, loaded: false });
-        fetch('http://127.0.0.1:5000/predict', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data: this.props.data
-            })
-            })
+        console.log(this.props.data)
+        fetch("https://asia-south1-collegeproject-380416.cloudfunctions.net/Predictor", {
+                        method: "POST",
+                        mode: 'cors',
+                        header: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ data: this.props.data })})
         .then(response => response.json())
         .then(data => {
-            this.setState({ data, isLoading: false,loaded: true });
+            console.log(data)
+            this.setState({ data:data.data, isLoading: false,loaded: true });
         })
         .catch(error => {
-            this.setState({ error, isLoading: false,loaded: false });
+            this.setState({ error:error, isLoading: false,loaded: false });
         });
       };
+      
+      handleClickWithEdit(){
+        fetch('https://test1-4dk76hxqra-el.a.run.app/rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            content: this.props.data,
+            predictedRating: this.state.data,
+            editedRating: this.state.selectedOptionR,
+            userId: this.props.user_id,
+            placeId: this.props.place_id
+        })
+        })
+        
+      }
+      handleClickWithoutEdit(){
+        fetch('https://test1-4dk76hxqra-el.a.run.app/rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            content: this.props.data,
+            predictedRating: this.state.data,
+            userId: this.props.user_id,
+            placeId: this.props.place_id
+        })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // handle response data
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+      }
     render() {
       const { isLoading, loaded } = this.state;
       return (
@@ -83,7 +124,7 @@ class RatingPredictionButton extends Component {
             }
             {(this.state.selectedOption==='no') && <div className='submitprocess'>
             <div className='info-data'>Click on Submit Button to Continue<br/><br/></div>
-            <div className='submit-button'><SubmitButton/></div>
+            <div className='submit-button' onClick = {this.handleClickWithoutEdit} ><SubmitButton/></div>
             </div>}
             {this.state.showAdditionalElements && <div className='newrating'>
                 <div className='raters'>
@@ -141,7 +182,7 @@ class RatingPredictionButton extends Component {
                 {(this.state.selectedOptionR !== '') && <div className='confirmationText' ><br/>You have selected Rating as {this.state.selectedOptionR}<br/><br/>
                 <div className='submitprocess'>
             <div className='info-data'>Click on Submit Button to Continue<br/><br/></div>
-            <div className='submit-button'><SubmitButton/></div>
+            <div className='submit-button' onClick={this.handleClickWithEdit}><SubmitButton/></div>
             </div>
                 </div>}
             
@@ -150,5 +191,11 @@ class RatingPredictionButton extends Component {
       );
     }
   }
-     
-  export default RatingPredictionButton;
+const mapStateToProps = state => ({
+isLoggedIn : state.isLoggedIn,
+first_name : state.first_name,
+last_name : state.last_name,
+user_id : state.user_id,
+place_id : state.place_id
+});     
+  export default connect(mapStateToProps)(RatingPredictionButton);
